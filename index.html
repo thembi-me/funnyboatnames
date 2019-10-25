@@ -4,41 +4,21 @@ layout: default
 <div id="container">
 <div id="grid" data-columns class="cols">
     {% for post in site.posts %}
-    <div class="box" data-url={{ post.img }}>
+    <div class="box" data-url="{{ post.img }}">
        {% if post.img %}
-          <img class="feat-image" src="{{ site.baseurl }}{{ post.img }}" alt="{{post.title}}">
+          <img class="feat-image" src="{{ site.baseurl }}/{{ post.img }}" alt="{{post.title}}">
        {% endif %}
           <div class="container">
             <h4>{{post.title}}</h4>
             <p>{{post.description}}</p>
-             <div class="action">{{ post.date | date: '%B %d, %Y' }}<a href="{{post.url}}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></div> 
-        </div>   
+             <div class="action">{{ post.date | date: '%B %d, %Y' }}<a href="{{site.baseurl}}{{post.url}}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a></div>
+        </div>
     </div>
    {% endfor %}
 
 </div>
 </div>
 
-<script src="{{site.baseurl}}js/salvattore.min.js"></script>
-<script>
-
-async function urlToColor(url) {
-  const urlUint8 = new TextEncoder().encode(url);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", urlUint8);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hashHex = hashArray.map(b => { return (b % 0xcc).toString(16).padStart(2, "0"); }).join("");
-  return "#" + hashHex.substr(0, 6);
-}
-
-async function doMagic() {
-  const boxes = document.getElementsByClassName("box");
-  for (let i = 0; i < boxes.length; ++i) {
-    const box = boxes[i];
-    const url = box.dataset.url;
-    const color = await urlToColor(url);
-    box.style.backgroundColor = color;
-  }
-}
-
-doMagic();
-</script>
+<script src="{{site.baseurl}}/js/salvattore.min.js"></script>
+<script src="{{site.baseurl}}/js/main.js"></script>
+<script>doMagic("box");</script>

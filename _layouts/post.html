@@ -4,9 +4,9 @@ layout: default
 
 <div class="page-container">
    {% if page.img %}
-    <img class="featured-img" src={{page.img}} alt="{{page.title}}">
+    <img class="featured-img" src={{site.baseurl}}/{{page.img}} alt="{{page.title}}">
     {% endif %}
-    <div class="content">
+    <div class="content" data-url="{{ page.img }}">
     <article>
         <h1 class="page-title">{{page.title}}</h1>
         {{page.description | markdownify}}
@@ -14,3 +14,5 @@ layout: default
     </article>
     </div>
 </div>
+<script src="{{site.baseurl}}/js/main.js"></script>
+<script>doMagic("content");</script>

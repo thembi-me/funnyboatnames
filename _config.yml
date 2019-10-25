@@ -1,10 +1,10 @@
 
 title: Funny boat names
 description: A collection of funny boat names, sailing around the world
-permalink: ':title/'
+permalink: pretty
 
 markdown: kramdown
-baseurl: "/funnyboatnames/"
+baseurl: "/funnyboatnames"
 
 sass:
     style: compressed
