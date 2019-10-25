@@ -1,0 +1,15 @@
+
+title: Funny boat names
+description: A collection of funny boat names, sailing around the world
+permalink: ':title/'
+
+markdown: kramdown
+baseurl: "/funnyboatnames/"
+
+sass:
+    style: compressed
+  
+highlight: rouge
+
+plugins: 
+    - jekyll-paginate
