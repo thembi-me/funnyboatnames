@@ -33,6 +33,7 @@ async function makePost(tmpdir, images) {
     title: "",
     stringifiedTitle: "",
     postPath: "",
+    description: "",
     image: null,
   };
 
@@ -72,6 +73,10 @@ async function makePost(tmpdir, images) {
     new Intl.DateTimeFormat("en-US", { day: "2-digit"}).format(post.date) + "-" +
     post.title.toLowerCase().replace(/ /gi, "_").replace(/[^\w\s]/gi, "").substr(0, 20);
 
+  post.description = await new Promise(resolve => {
+    rl.question(chalk.yellow("Description: "), answer => resolve(answer));
+  });
+
   post.postPath = path.join(postsPath, post.stringifiedTitle + ".md");
 
   post.image = await processImage(tmpdir, filesPath, images[0], post.stringifiedTitle, 0);
@@ -83,7 +88,8 @@ async function makePost(tmpdir, images) {
     "layout: post\n" +
     "title: " + post.title + "\n" +
     "date: " + oldestDate.toISOString() + "\n" +
-    "img: " + post.image.imageName + "\n" +
+    "img: " + path.join("files", post.image.imageName) + "\n" +
+    "description: " + post.description + "\n" +
     "---\n";
 
   process.stdout.write("\n");
