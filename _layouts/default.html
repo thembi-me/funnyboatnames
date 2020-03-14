@@ -6,7 +6,7 @@ layout: compress
 <head>
   <meta charset="UTF-8">
   <title>{% if page.title %}{{page.title}} - {{site.title}}{% else %}{{site.title}}{% endif %}</title>
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+  <link rel="stylesheet" href="{{ '/css/main.css' | relative_url }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{{ site.description }}"/>
 </head>
@@ -14,13 +14,13 @@ layout: compress
 <header>
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="{{ site.baseurl }}/">Home</a>
+  <a href="{{ '/' | relative_url }}">Home</a>
   <a href="https://thembi.me">Thembi</a>
 </div>
 
 <!-- Use any element to open the sidenav -->
 <span id="slid" onclick="openNav()"><i class="fa fa-align-left" aria-hidden="true"></i></span>
-<a href="{{site.baseurl}}/"><h1 class="header-title">{{site.title}}</h1></a>
+<a href="{{ '/' | relative_url }}"><h1 class="header-title">{{site.title}}</h1></a>
 <h2 class="header-tagline">{{site.description}}</h2>
 </header>
 <div id="main">
